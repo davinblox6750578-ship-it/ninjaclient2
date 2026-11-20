@@ -21,6 +21,9 @@ jobs:
           }
           rootProject.name = 'ninjaclient'
           EOF
+      - name: Corrigir nomes de metodos 1.21.11
+        run: |
+          find ninjaclient/src -name '*.java' -exec sed -i 's/cam\.getPos()/cam.getCameraPos()/g; s/\.getPos()/.getEntityPos()/g' {} +
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
